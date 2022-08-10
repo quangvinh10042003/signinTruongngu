@@ -1,0 +1,75 @@
+<div class="all">
+    <div class="bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <h2>Sign Up</h2>
+                    <form [formGroup]="formInfo" (ngSubmit)="signUp()">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name : </label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name here" [(ngModel)]="form.fullName.value" formControlName="fullName">
+                            <div *ngIf="form.fullName.invalid && (form.fullName.dirty || form.fullName.touched)">
+                                <div *ngIf="form.fullName.errors?.['required']">
+                                    <span class="text-danger">Please enter your name</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Phone number : </label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone number" formControlName="phone" [(ngModel)]="form.phone.value">
+                            <div *ngIf="form.phone.invalid && (form.phone.dirty || form.phone.touched)">
+                                <div *ngIf="form.phone.errors?.['required']">
+                                    <span class="text-danger">Please enter your phone number</span>
+                                </div>
+                                <div *ngIf="!form.phone.errors?.['parten']">
+                                    <span class="text-danger">Enter the correct phone number format</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email : </label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" formControlName="email" [(ngModel)]="form.email.value">
+                            <div *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)">
+                                <div *ngIf="form.email.errors?.['required']">
+                                    <span class="text-danger">Please enter your email</span>
+                                </div>
+                                <div *ngIf="!form.email.errors?.['parten']">
+                                    <span class="text-danger">Enter the correct email format</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password : </label>
+                            <div class="relavtive">
+                                <input type="password" class="form-control" (keyup)="dnoneEye()" id="password" placeholder="Password" formControlName="password" [(ngModel)]="form.password.value">
+                                <i class="fa-solid fa-eye d-none eyes" (click)="showpass()" id="eye"></i>
+                            </div>
+                            <div *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)">
+                                <div *ngIf="form.password.errors?.['required']">
+                                    <span class="text-danger">Please enter your password</span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 style="margin: 10px 0px;">Do you have an account ? <a routerLink="/login">Login ! </a></h6>
+                        <button type="submit" class="nkt20" [disabled]="form.fullName.invalid || form.phone.invalid || form.email.invalid || form.password.invalid">SIGNUP</button>
+                    </form>
+                    <div class="center">
+                        <h6>Or login with</h6>
+                    </div>
+                    <div class="flex">
+                        <div class="fb">
+                            <i class="fa-brands fa-facebook"></i>
+                        </div>
+                        <div class="tw">
+                            <i class="fa-brands fa-twitter"></i>
+                        </div>
+                        <div class="gg">
+                            <i class="fa-brands fa-google"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
